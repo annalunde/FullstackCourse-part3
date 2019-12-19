@@ -6,6 +6,8 @@ const cors = require('cors')
 
 app.use(bodyParser.json())
 
+app.use(express.static('build'))
+
 const requestLogger = (request, response, next) => {
   console.log('Method:', request.method)
   console.log('Path:  ', request.path)
@@ -33,7 +35,7 @@ let persons = [
   ]
 
 app.get('/', (req, res) => {
-  res.send('<h1>Hello World!</h1>')
+  res.send('<h1>Hello Everybody!</h1>')
 })
 
 app.get('/info',(req,res)=> {
@@ -42,7 +44,7 @@ app.get('/info',(req,res)=> {
   res.send(`<h1>Phonebook has info for ${number} people</h1> <h2>${date}</h2> `)
 })
 
-
+ 
 app.get('/api/persons', (req, res) => {
   res.json(persons)
   res.status(202).end()
